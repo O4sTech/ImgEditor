@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace Logo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="image-container" id="myDiv">
+        <div class="userUploadLogo">
+            <!-- <img  id="userLogo" src="" alt="User Logo" width="100%" style="display: none;"> -->
+            <canvas id="userLogo" style="display: none;"></canvas>
+            <input type="file" id="fileUpload" accept="image/*" class="sanket">
+        </div>
+        <img id="baseImage" src="./t-shirt.jpeg" alt="Base Image">
+    </div>
+    <div>
+        <button id="captureBtn">Capture as Image</button>
+    </div>
+    <!-- <img id="baseImage" src="./product_32_4m0ntq5j.ir4.jpeg" alt="Base Image">
+    <img id="baseImage" src="./product_32_3yjkz03l.az0.jpeg" alt="Base Image"> -->
+      <!-- Include html2canvas library -->
+      <script src="script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+      <script>
+          document.getElementById('captureBtn').addEventListener('click', function () {
+              const div = document.getElementById('myDiv');
+              const img = document.getElementById('showimg');
+      document.querySelector('.userUploadLogo').style.border = 'none';
+              html2canvas(div, {
+                  scale: 2 // Increase scale factor for higher quality
+              }).then(canvas => {
+                  const img = canvas.toDataURL('image/png');
+                  const link = document.createElement('a');
+                  link.href = img;
+                  link.download = 'captured-image.png';
+                  link.click();
+              }).catch(error => {
+                  console.error('Error capturing the div:', error);
+              });
+          });
+      </script>
+</body>
+</html>
